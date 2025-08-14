@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>محطة غسيل السيارات - الرئيسية</title>
+  <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="static/home.css">
+  <link rel="stylesheet" href="static/style.css">
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('{{ url_for("static", filename="service-worker.js") }}')
+    .then(() => console.log("Service Worker registered!"));
+  }
+</script>
+<meta name="google-site-verification" content="Ma5ZjeN-j2NZZq3Ip77aJvNI-0Jsea5lomrt5mHg6Z8" />
+</head>
+<body>
+  <div class="appbar">
+    <div class="appbar-container">
+      <div class="logo">
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="شعار محطة غسيل السيارات">
+      </div>
+      
+      <button class="menu-toggle" aria-label="قائمة التنقل">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <nav class="appbar-nav">
+        <ul>
+          <li><a href="{{url_for('home')}}"><i class="fas fa-home"></i> الرئيسية</a></li>
+          <li><a href="{{url_for('work')}}"><i class="fas fa-car"></i> خدماتنا</a></li>
+          <li><a href="tel:+212616460988"><i class="fas fa-phone"></i> اتصل بنا</a></li>
+          <li><a href="{{url_for('about')}}"><i class="fas fa-info-circle"></i> عنا</a></li>
+          {% if session.get('logged_in') %}
+          <li><a href="{{url_for('admin_page')}}"><i class="fa-solid fa-user-tie"></i>ادارة الطلباة </a></li>
+          {%endif%}
+          <button id="installBtn" style="display:none;">تثبيت التطبيق</button>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  
+  <main>
+    <div class="section">
+      <div id="img">
+        <img src="{{ url_for('static', filename='images/sevice1.jpg') }}" class="active">
+        <img src="{{ url_for('static', filename='images/services2.jpg') }}">
+        <img src="{{ url_for('static', filename='images/service2.jpg') }}">
+        <img src="{{ url_for('static', filename='images/service4.jpeg') }}">
+      </div>
+      <span>
+        اختر طريقة غسيل سيارتك بكل اريحية و بسهولة 
+      </span>
+    </div>
+    
+    <form action="/" method="post">
+      <select name="type" >
+        <option value="" selected disabled>-- اختر نوع الخدمة --</option>
+        <option  value="0">غسيل خارجي</option>
+        <option value="1">غسيل داخلي و خارجي</option>
+        <option value="2">تلميع و تشميع</option>
+        <option value="3">تنظيف المكينة</option>
+        <option value="4">غسل و تعطير السجاد</option>
+        <option value="5">الغسيل أسفل السيارة</option>
+      </select>
+      <button type="submit">احجز الان</button>
+       {% if message %}
+        <span id="message">{{message}}</span>
+        {% endif %}
+    </form>
+    
+    <p>بعد اكمال حجز موعد غسل سيارتك ستجدنا على الخريطة</p>
+    <iframe src="https://maps.google.com/maps?q=محطة+غسيل+سيارات&output=embed"></iframe>
+  </main>
+   {% include 'footer.html' %}
+  <script src="static/main.js"></script>
+  <script>
+      // تغيير الصور تلقائياً في الصفحة الرئيسية
+document.addEventListener('DOMContentLoaded', function() {
+  let currentImage = 0;
+  const images = document.querySelectorAll('#img img');
+  
+  if (images.length > 0) {
+    function changeImage() {
+      images[currentImage].classList.remove('active');
+      currentImage = (currentImage + 1) % images.length;
+      images[currentImage].classList.add('active');
+    }
+    
+    setInterval(changeImage, 3000);
+  }
+});
+//PWA
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  // هنا يمكنك عرض زر مخصص للمستخدم
+  document.getElementById('installBtn').style.display = 'block';
+});
+
+document.getElementById('installBtn').addEventListener('click', () => {
+  deferredPrompt.prompt();
+  deferredPrompt.userChoice.then(choiceResult => {
+    console.log(choiceResult.outcome);
+    deferredPrompt = null;
+  });
+});
+  </script>
+</body>
+</html>

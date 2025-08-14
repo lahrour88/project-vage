@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حجز موعد غسيل سيارة</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="static/style.css">
+  <link rel="stylesheet" href="static/add.css">
+</head>
+<body>
+  <div class="appbar">
+    <div class="appbar-container">
+      <div class="logo">
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="شعار محطة غسيل السيارات">
+      </div>
+      
+      <button class="menu-toggle" aria-label="قائمة التنقل">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <nav class="appbar-nav">
+        <ul>
+          <li><a href="{{url_for('home')}}"><i class="fas fa-home"></i> الرئيسية</a></li>
+          <li><a href="{{url_for('work')}}"><i class="fas fa-car"></i> خدماتنا</a></li>
+          <li><a href="tel :0616460988"><i class="fas fa-phone"></i> اتصل بنا</a></li>
+          <li><a href="{{url_for('about')}}"><i class="fas fa-info-circle"></i> عنا</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  
+  <main>
+    <div class="introduction">
+      <img src="{{img}}">
+      <span>
+        <p>{{ vage_info }}</p>
+        <p id="price">{{ price }}</p>
+      </span>
+    </div>
+    
+    <p>
+      أدخل معلومات الاتصال المطلوبة والتاريخ والوقت المطلوبين، ثم اختر الخدمات التي ترغب بها من قائمة خياراتنا. سنتواصل معك بعرض قرب وقت ممكن!
+    </p>
+    
+    <form action="/add" method="post">
+      <input name="user_name" type="text" placeholder="الاسم الكامل" required>
+      <input name="phone_number" type="tel" placeholder="رقم الهاتف" required>
+      <input name="email" type="email" placeholder="البريد الالكتروني" required>
+      <input name="adresse" type="text" placeholder="العنوان (ان كنت تريد الخدمة المتنقلة )" >
+      
+      <label for="car-category">اختر فئة المركبة:</label>
+      <select id="car-category" name="car_category" required>
+        <option value="" selected disabled>-- اختر الفئة --</option>
+        <option value="A_citadine">Catégorie A (Citadines) — سيارات صغيرة</option>
+        <option value="B_berlines">Catégorie B (Berlines) — سيدان / متوسطة</option>
+        <option value="C_petit_suv">Catégorie C (Petit SUV) — SUV صغيرة</option>
+        <option value="D_grand_suv">Catégorie D (Grand SUV) — SUV كبيرة</option>
+        <option value="other">Autre catégorie (Camion, bus, ..) — مركبات كبيرة / خاصة</option>
+      </select>
+      
+      <input type="text" name="modul_car" placeholder="نوع و طراز السيارة">
+      <label for="car-category">موعد الغسيل</label>
+      <div id="tume">
+  <input name="minut" type="time"required="" placeholder="احدد وقت الغسيل">
+  <input name="day" type="date" placeholder="يوم الغسيل" required="">
+</div>
+     
+      <button  name="submit" type="submit">تأكيد الطلب</button>
+      {% if result %}
+          <p value="{{value}}">{{result}}</p>
+      {% endif %}
+    </form>
+  </main>
+  {% include 'footer.html' %}
+  <script src="static/main.js"></script>
+</body>
+</html>

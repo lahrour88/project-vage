@@ -1,0 +1,102 @@
+/* تنسيقات خاصة بصفحة الحجز */
+.introduction {
+    margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+#tume {
+  display: flex;  /* يجعل العناصر بجانب بعضها */
+  gap: 0;         /* لا مسافة بين العناصر */
+}
+
+#tume input {
+    height: 30px;
+  border: none;   /* إزالة الحدود إذا كانت موجودة */
+  padding: 3px;     /* إزالة الحشو الداخلي */
+  margin: 5px;      /* إزالة الهوامش الخارجية */
+  outline: none;  /* إزالة الحدود عند التركيز */
+}
+.introduction img {
+  width: 99%;
+  border-radius: 7px;
+  border: none;
+  height: auto;
+  margin: auto;
+  margin-top: 1px;
+  object-fit: cover;
+}
+.introduction #price{
+    color: green;
+}
+.introduction span {
+  padding: 20px;
+}
+
+.introduction p {
+  margin-bottom: 10px;
+}
+
+main p {
+  text-align: center;
+  margin: 20px 0;
+  color: var(--dark-color);
+}
+
+form {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+input, select, button {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+select {
+  background-color: white;
+}
+
+button {
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  color: var(--dark-color);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .introduction img {
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .introduction img {
+    height: 200px;
+  }
+}

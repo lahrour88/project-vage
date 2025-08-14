@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>محطة غسيل السيارات - الأفضل في المنطقة</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="static/style.css">
+  <link rel="stylesheet" href="static/about.css">
+</head>
+<body>
+  <div class="appbar">
+    <div class="appbar-container">
+      <div class="logo">
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="شعار محطة غسيل السيارات">
+      </div>
+      
+      <button class="menu-toggle" aria-label="قائمة التنقل">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <nav class="appbar-nav">
+        <ul>
+          <li><a href="{{url_for('home')}}"><i class="fas fa-home"></i> الرئيسية</a></li>
+          <li><a href="{{url_for('work')}}"><i class="fas fa-car"></i> خدماتنا</a></li>
+          <li><a href="tel:0616460988"><i class="{{url_for('admin_page')}}"></i> اتصل بنا</a></li>
+          <li><a href="{{url_for('about')}}"><i class="fas fa-info-circle"></i> عنا</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  
+  <main>
+    <section class="hero animated">
+      <div class="hero-text">
+        <h1>مرحبًا بكم في محطتنا لغسيل السيارات</h1>
+        <p>
+          نقدم لكم أفضل خدمات غسيل وتلميع السيارات بأحدث التقنيات وأجود المواد. 
+          فريقنا المحترف جاهز لخدمتكم على مدار الساعة لتجعل سيارتك كالجديدة.
+        </p>
+      </div>
+    </section>
+    
+    <form action="/about" method="post" class="animated delay-1">
+      <h5>تواصل معنا لأي استفسار أو ملاحظة</h5>
+      
+      <div class="form-group">
+        <input type="text" name="user_name" placeholder="الاسم الكامل" required>
+      </div>
+      
+      <div class="form-group">
+        <input type="email" name="email" placeholder="بريدك الإلكتروني" required>
+      </div>
+      
+      <div class="form-group">
+        <input type="tel" name="phone_number" placeholder="رقم هاتفك" required>
+      </div>
+      
+      <div class="form-group">
+        <textarea name="message" placeholder="اكتب رسالتك هنا..." required></textarea>
+      </div>
+      
+      <button type="submit" class="submit-btn">إرسال الرسالة</button>
+      
+      <div class="buttom_logo animated delay-2">
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="شعار الشركة">
+        <h4>خدمة العملاء على مدار الساعة</h4>
+      </div>
+    </form>
+  </main>
+  
+  {% include 'footer.html' %}
+  
+  <script src="static/main.js"></script>
+</body>
+</html>

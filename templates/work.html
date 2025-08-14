@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>خدمات غسيل السيارات | محطتنا المتميزة</title>
+  <link rel="stylesheet" href="static/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2980b9;
+      --accent-color: #f1c40f;
+      --light-color: #ecf0f1;
+      --dark-color: #2c3e50;
+      --success-color: #2ecc71;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Tajawal', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.7;
+      padding-top: 70px;
+    }
+    /* محتوى الصفحة */
+    .container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+    
+    .page-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .page-header h1 {
+      font-size: 2.5rem;
+      color: var(--dark-color);
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .page-header h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      right: 50%;
+      transform: translateX(50%);
+      width: 80px;
+      height: 4px;
+      background: var(--accent-color);
+      border-radius: 2px;
+    }
+    
+    .page-header p {
+      color: #666;
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+    }
+    
+    /* بطاقات الخدمات */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    
+    .service-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    }
+    
+    .service-img {
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .service-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .service-card:hover .service-img img {
+      transform: scale(1.05);
+    }
+    
+    .service-content {
+      padding: 20px;
+    }
+    
+    .service-content h3 {
+      color: var(--dark-color);
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+    }
+    
+    .service-content p {
+      color: #666;
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+    }
+    
+    .service-price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px dashed #ddd;
+    }
+    
+    .price {
+      font-weight: bold;
+      color: var(--primary-color);
+      font-size: 1.3rem;
+    }
+    
+    .book-btn {
+      background: var(--accent-color);
+      color: var(--dark-color);
+      border: none;
+      padding: 8px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .book-btn:hover {
+      background: #e6b801;
+      transform: translateY(-2px);
+    }
+    
+    /* قسم الأسئلة الشائعة */
+    .faq-section {
+      background: white;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      margin-bottom: 50px;
+    }
+    
+    .faq-section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: var(--dark-color);
+    }
+    
+    .faq-item {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 15px;
+    }
+    
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      padding: 10px 0;
+    }
+    
+    .faq-question h3 {
+      color: var(--secondary-color);
+      font-size: 1.1rem;
+    }
+    
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      color: #666;
+      line-height: 1.7;
+    }
+    
+    .faq-answer.active {
+      max-height: 300px;
+      padding-top: 10px;
+    }
+    
+    /* التذييل */
+    footer {
+      background: var(--dark-color);
+      color: white;
+      padding: 50px 0 20px;
+    }
+    
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 0 20px;
+    }
+    
+    .footer-logo {
+      margin-bottom: 20px;
+    }
+    
+    .footer-logo img {
+      height: 60px;
+    }
+    
+    .footer-about p {
+      margin-bottom: 15px;
+      color: #ddd;
+    }
+    
+    .footer-links h3, .footer-contact h3 {
+      color: var(--accent-color);
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+    
+    .footer-links ul {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: #ddd;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--accent-color);
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      color: #ddd;
+    }
+    
+    .contact-item i {
+      margin-left: 10px;
+      color: var(--accent-color);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      transition: all 0.3s;
+    }
+    
+    .social-links a:hover {
+      background: var(--accent-color);
+      color: var(--dark-color);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+    
+    /* تأثيرات الحركة */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animated {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+    
+    /* وسائط استعلام للتجاوب */
+    @media (max-width: 992px) {
+      .service-card {
+        max-width: 100%;
+      }
+      
+      .faq-section {
+        padding: 30px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      
+      .appbar-nav {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        background: var(--secondary-color);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 20px;
+        border-radius: 0 0 0 10px;
+        box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
+        transition: right 0.3s ease;
+      }
+      
+      .appbar-nav.active {
+        right: 0;
+        z-index: 12;
+      }
+      
+      .appbar-nav ul {
+        flex-direction: column;
+      }
+      
+      .appbar-nav li {
+        margin: 8px 0;
+      }
+      
+      .appbar-nav a {
+        display: block;
+        padding: 10px;
+      }
+      
+      .page-header h1 {
+        font-size: 2rem;
+      }
+      
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .faq-section {
+        padding: 20px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      body {
+        padding-top: 60px;
+      }
+      
+      .logo img {
+        height: 40px;
+      }
+      
+      .page-header h1 {
+        font-size: 1.8rem;
+      }
+      
+      .page-header p {
+        font-size: 1rem;
+      }
+      
+      .service-content h3 {
+        font-size: 1.2rem;
+      }
+      
+      .faq-question h3 {
+        font-size: 1rem;
+      }
+    }
+    .book-btn a{
+        text-decoration: none;
+        color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="appbar">
+    <div class="appbar-container">
+      <div class="logo">
+        <img src="static/images/logo.jpg" alt="شعار محطة غسيل السيارات">
+      </div>
+      
+      <button class="menu-toggle" aria-label="قائمة التنقل">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <nav class="appbar-nav">
+        <ul>
+          <li><a href="{{url_for('home')}}"><i class="fas fa-home"></i> الرئيسية</a></li>
+          <li><a href="#" class="active"><i class="fas fa-car"></i> خدماتنا</a></li>
+          <li><a href="tel:0616460988"><i class="fas fa-phone"></i> اتصل بنا</a></li>
+          <li><a href="{{url_for('about')}}"><i class="fas fa-info-circle"></i> عنا</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  
+  <div class="container">
+    <header class="page-header animated">
+      <h1>خدمات غسيل السيارات المتكاملة</h1>
+      <p>نقدم لكم مجموعة متكاملة من خدمات العناية بالسيارة باستخدام أحدث التقنيات وأجود المواد لضمان الحصول على أفضل النتائج</p>
+    </header>
+    
+    <div class="services-grid">
+      <!-- خدمة 1 -->
+      <div class="service-card animated delay-1">
+        <div class="service-img">
+          <img src="static/images/sevice1.jpg" alt="غسيل خارجي كامل">
+        </div>
+        <div class="service-content">
+          <h3>غسيل خارجي كامل</h3>
+          <p>غسيل شامل للسيارة من الخارج باستخدام مواد عالية الجودة وشمع للحماية، يشمل غسيل الجسم، العجلات، الزجاج الأمامي والخلفي.</p>
+          <div class="service-price">
+            <span class="price">price dh</span>
+            <button class="book-btn"><a href="{{url_for('add_data')}}">احجز الان</a></button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- خدمة 2 -->
+      <div class="service-card animated delay-1">
+        <div class="service-img">
+          <img src="static/images/services2.jpg" alt="غسيل داخلي وخارجي">
+        </div>
+        <div class="service-content">
+          <h3>غسيل داخلي وخارجي</h3>
+          <p>تنظيف كامل للسيارة من الداخل والخارج، يشمل شفط الأتربة، تنظيف المقاعد، السجاد، لوحة القيادة، وتلميع الأسطح الداخلية.</p>
+          <div class="service-price">
+            <span class="price">45 dh</span>
+            <button class="book-btn"><a href="{{url_for('add_data')}}">احجز الان</a></button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- خدمة 3 -->
+      <div class="service-card animated delay-2">
+        <div class="service-img">
+          <img src="static/images/service2.jpg" alt="تلميع وتشميع">
+        </div>
+        <div class="service-content">
+          <h3>تلميع وتشميع</h3>
+          <p>خدمة متكاملة لتلميع جسم السيارة وإزالة الخدوش البسيطة مع تطبيق طبقة شمع عالية الجودة للحماية ولمعان يدوم طويلاً.</p>
+          <div class="service-price">
+            <span class="price">80 dh</span>
+            <button class="book-btn"><a href="{{url_for('add_data')}}">احجز الان</a></button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- خدمة 4 -->
+      <div class="service-card animated delay-2">
+        <div class="service-img">
+          <img src="static/images/service4.jpeg" alt="تنظيف المكينة">
+        </div>
+        <div class="service-content">
+          <h3>تنظيف المكينة</h3>
+          <p>تنظيف محرك السيارة بعناية لإزالة الأتربة والزيوت المتراكمة مع الحفاظ على الأجزاء الحساسة باستخدام مواد آمنة.</p>
+          <div class="service-price">
+            <span class="price">60 dh</span>
+            <button class="book-btn"><a href="{{url_for('add_data')}}">احجز الان</a></button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- خدمة 5 -->
+      <div class="service-card animated delay-3">
+        <div class="service-img">
+          <img src="static/images/service5.jpg" alt="غسيل سجاد وتعطير">
+        </div>
+        <div class="service-content">
+          <h3>غسيل سجاد وتعطير</h3>
+          <p>إزالة البقع العميقة من سجاد السيارة باستخدام تقنية البخار مع تعطير داخلي بروائح مميزة تدوم طويلاً.</p>
+          <div class="service-price">
+            <span class="price">55 dh</span>
+            <button class="book-btn"><a href="{{url_for('add_data')}}">احجز الان</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- الأسئلة الشائعة -->
+    <section class="faq-section animated delay-3">
+      <h2>أسئلة شائعة عن خدماتنا</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>كم تستغرق عملية الغسيل الكامل؟</h3>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>تختلف المدة حسب الخدمة المطلوبة وحجم السيارة، ولكن في المتوسط تستغرق خدمة الغسيل الخارجي من 20-30 دقيقة، بينما قد تستغرق الخدمة الكاملة من ساعة إلى ساعة ونصف.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>هل تقدمون خدمة التنظيف بالبخار؟</h3>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>نعم، نقدم خدمة التنظيف بالبخار للمقاعد والسجاد والتي تعد أكثر فعالية في إزالة البقع العميقة والجراثيم مع الحفاظ على نسيج القماش.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>هل يمكنني الانتظار في السيارة أثناء الغسيل؟</h3>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>لضمان سلامتك وجودة الخدمة، ننصح بترك السيارة مع فريقنا في منطقة الانتظار المخصصة والمجهزة بكافة وسائل الراحة أثناء تنفيذ الخدمة.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>هل لديكم خدمة متنقلة</h3>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>
+              نعم لدينا وحدة تنقل خاصة بنا داخل المدينة مستعدة في اي وقة ومجهزة بأحدة التقنيات
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+     {% include 'footer.html' %}
+
+  <script>
+    // القائمة المنسدلة للهواتف
+    const menuToggle = document.querySelector('.menu-toggle');
+    const appbarNav = document.querySelector('.appbar-nav');
+    
+    menuToggle.addEventListener('click', function() {
+      appbarNav.classList.toggle('active');
+      const icon = this.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
+    
+    // الأسئلة الشائعة
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const icon = question.querySelector('i');
+        
+        answer.classList.toggle('active');
+        icon.classList.toggle('fa-chevron-down');
+        icon.classList.toggle('fa-chevron-up');
+      });
+    });
+    
+    // إضافة السنة الحالية
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // تأثيرات الظهور عند التمرير
+    const animateElements = document.querySelectorAll('.animated, .delay-1, .delay-2, .delay-3');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+    
+    animateElements.forEach(el => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
