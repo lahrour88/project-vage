@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="static/style.css">
   <script>
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('{{ url_for("static", filename="service-worker.js") }}')
+    navigator.serviceWorker.register("/service-worker.js");
     .then(() => console.log("Service Worker registered!"));
   }
 </script>
