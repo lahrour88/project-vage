@@ -20,6 +20,10 @@ def robots():
     return send_from_directory("static", "robots.txt")
 
 
+@app.route('/service-worker.js')
+def service_worker():
+    return send_from_directory(os.path.dirname(__file__), 'service-worker.js')
+
 @app.route("/sitemap.xml")
 def sitemap():
     return send_from_directory("static", "sitemap.xml")
