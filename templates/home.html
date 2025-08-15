@@ -36,7 +36,9 @@
           {% if session.get('logged_in') %}
           <li><a href="{{url_for('admin_page')}}"><i class="fa-solid fa-user-tie"></i>ادارة الطلباة </a></li>
           {%endif%}
-          <button id="installBtn" style="display:none;">تثبيت التطبيق</button>
+<li>
+          <button id="installBtn" style="display:none;"><i class="fa-solid fa-download fa-xl" style="color: #e1dcdc;"></i>تثبيت التطبيق</button>
+</li>
         </ul>
       </nav>
     </div>
