@@ -1,10 +1,11 @@
-const CACHE_NAME = "my-pwa-cache-v1";
+const CACHE_NAME = "project-vage-v1.0.01";
 const urlsToCache = [
   "/", 
   "/about",
   "/login",
   "/admin",
-  "/add"
+  "/add",
+  "work"
   // CSS
   "/static/style.css",
   "/static/home.css",
