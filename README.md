@@ -23,7 +23,6 @@ cd project-vage
 ```
 2. تثبيت المتطلبات :
 ```bash
-pkg install graphviz
 pip install -r requirements.txt
 ```
 ## الاستخدام :
