@@ -15,19 +15,23 @@ from datetime import timedelta
 
 app.permanent_session_lifetime = timedelta(days=7)  # مدة بقاء الجلسة
 
+# ✅ robots.txt
 @app.route("/robots.txt")
 def robots():
-    return send_from_directory("static", "robots.txt")
+    return send_from_directory("static", "robots.txt", mimetype="text/plain")
+
+# ✅ sitemap.xml
+@app.route("/sitemap.xml")
+def sitemap():
+    with open("static/sitemap.xml", "r", encoding="utf-8") as f:
+        sitemap_xml = f.read()
+    return Response(sitemap_xml, mimetype="application/xml")
+
 
 
 @app.route('/service-worker.js')
 def service_worker():
     return send_from_directory(os.path.dirname(__file__), 'service-worker.js')
-
-@app.route("/sitemap.xml")
-def sitemap():
-    return send_from_directory("static", "sitemap.xml", mimetype="application/xml")
-    
     
 @app.route("/work",methods=["get","post"])
 def work():
