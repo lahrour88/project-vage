@@ -16,17 +16,8 @@
 ![واجهة التطبيق](static/images/code.jpg)  
 
 ## التثبيت
-1. انسخ المستودع:  
+انسخ المستودع:  
 ```bash
-    git clone https://github.com/lahrour88/project-vage.git
-2. تثبيت المتطلبات :
-```bash
-    pkg install graphviz
-    pip install -r requirements.txt
-## الاستخدام :
-3. شغل التطبيق :
-```bash
-    python main.py
-4. افتح المتصفح على الرابط :
-```bash
-http://localhost:5000
+git clone https://github.com/lahrour88/project-vage.git
+pkg install graphviz
+pip install -r requirements.txt
