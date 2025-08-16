@@ -19,6 +19,7 @@
 1. انسخ المستودع:  
 ```bash
 git clone https://github.com/lahrour88/project-vage.git
+cd project-vage
 ```
 2. تثبيت المتطلبات :
 ```bash
