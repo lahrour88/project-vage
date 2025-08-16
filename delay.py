@@ -40,7 +40,7 @@ def get_data():
     data = response.json()
     data = data[::-1]  # ترتيب عكسي
 
-    ONE_WEEK = 60*60*2
+    ONE_WEEK = 60*60
     THREE_MONTHS = 90 * 24 * 60 * 60
 
     for user in data:
