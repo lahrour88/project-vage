@@ -14,6 +14,23 @@
 - الاتصال يتم عبر **Requests** وليس عبر مكتبة رسمية لـ Supabase.  
 
 ![واجهة التطبيق](static/images/code.jpg)  
+## هيكل المشروع 
+```bash
+project-vage
+|____### static
+|    |__icons
+|    |  |__ico_1.png
+|    |  |__ico_.png
+|    |__images
+|    |__style.css
+|    |__about.css
+|    |__home.css
+|    |__add.css
+|    |__main.js
+|    |__manifest.json
+|    |__robots.txt
+|    |__sitemap.xml
+
 
 ## التثبيت
 1. انسخ المستودع:  
