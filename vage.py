@@ -1,7 +1,7 @@
 import smtplib
 from email.message import EmailMessage
 from dotenv import load_dotenv
-import os
+import os ,requests
 load_dotenv()
 class user:
     def __init__(self,full_name, email, phone_number,car_model,car_category,appointment_date,appointment_time,vage_type,adresse):

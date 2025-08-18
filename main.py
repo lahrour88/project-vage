@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect,Response, url_for,session ,send_from_directory
+from flask import Flask, render_template, request, redirect, url_for,session ,send_from_directory,Response
 from dotenv import load_dotenv
 from data import data
 load_dotenv()
@@ -13,14 +13,22 @@ url=os.getenv("url")
 api_key =os.getenv("api_key")
 from datetime import timedelta
 
-app.permanent_session_lifetime = timedelta(days=7)  # مدة بقاء الجلسة
+app.permanent_session_lifetime = timedelta(days=7)  # Ù…Ø¯Ø© Ø¨Ù‚Ø§Ø¡ Ø§Ù„Ø¬Ù„Ø³Ø©
 
-# ✅ robots.txt
+
+
+
+@app.route('/service-worker.js')
+def service_worker():
+    return send_from_directory(os.path.dirname(__file__), 'service-worker.js')
+
+
+#  robots.txt
 @app.route("/robots.txt")
 def robots():
     return send_from_directory("static", "robots.txt", mimetype="text/plain")
 
-# ✅ sitemap.xml
+#  sitemap.xml
 @app.route("/sitemap.xml")
 def sitemap():
     with open("static/sitemap.xml", "r", encoding="utf-8") as f:
@@ -28,10 +36,7 @@ def sitemap():
     return Response(sitemap_xml, mimetype="application/xml")
 
 
-
-@app.route('/service-worker.js')
-def service_worker():
-    return send_from_directory(os.path.dirname(__file__), 'service-worker.js')
+    
     
 @app.route("/work",methods=["get","post"])
 def work():
@@ -43,15 +48,15 @@ def login():
         username = request.form.get('username')
         password = request.form.get('password')
         
-        # هنا تضع منطق التحقق من صحة البيانات
-        if username == 'admin' and password == 'admin123':  # هذا مثال فقط، استخدم قاعدة بيانات في التطبيق الحقيقي
+        # Ù‡Ù†Ø§ ØªØ¶Ø¹ Ù…Ù†Ø·Ù‚ Ø§Ù„ØªØ­Ù‚Ù‚ Ù…Ù† ØµØ­Ø© Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª
+        if username == 'admin' and password == 'admin123':  # Ù‡Ø°Ø§ Ù…Ø«Ø§Ù„ ÙÙ‚Ø·ØŒ Ø§Ø³ØªØ®Ø¯Ù… Ù‚Ø§Ø¹Ø¯Ø© Ø¨ÙŠØ§Ù†Ø§Øª ÙÙŠ Ø§Ù„ØªØ·Ø¨ÙŠÙ‚ Ø§Ù„Ø­Ù‚ÙŠÙ‚ÙŠ
             session['logged_in'] = True
             session['username'] = username
             session.permanent = True
             print(session)
             return redirect(url_for('admin_page'))
         else:
-            error="خطأ في اسم المستخدم او كلمة المرور"
+            error="Ø®Ø·Ø£ ÙÙŠ Ø§Ø³Ù… Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù… Ø§Ùˆ ÙƒÙ„Ù…Ø© Ø§Ù„Ù…Ø±ÙˆØ±"
     return render_template('login.html',error=error)
     
 @app.route("/admin")
@@ -68,7 +73,7 @@ def home():
         value=request.form.get('type')
         if not value :
             print(value)
-            message="المرجو منك ملأ احد الخيارات "
+            message="Ø§Ù„Ù…Ø±Ø¬Ùˆ Ù…Ù†Ùƒ Ù…Ù„Ø£ Ø§Ø­Ø¯ Ø§Ù„Ø®ÙŠØ§Ø±Ø§Øª "
             return render_template("home.html",message=message)
         else:
             index=int(value)
@@ -126,12 +131,12 @@ def add_data():
             }
         #conect supabase with requests
             response = requests.post(url, headers=headers,json=data)
-            result="لقد تم حجز الموعد بنجاح"
+            result="Ù„Ù‚Ø¯ ØªÙ… Ø­Ø¬Ø² Ø§Ù„Ù…ÙˆØ¹Ø¯ Ø¨Ù†Ø¬Ø§Ø­"
             print(response.json(),"\n")
             print(session)
     except Exception as e :
         print(e)
-        result="فشل عملية الحجز اعد تلمحاولة لاحقا"
+        result="ÙØ´Ù„ Ø¹Ù…Ù„ÙŠØ© Ø§Ù„Ø­Ø¬Ø² Ø§Øا¹Ø¯ ØªÙ„Ù…Ø­Ø§ÙˆÙ„Ø© Ù„Ø§Ø­Ù‚Ø§"
     return render_template("add.html",price=price,vage_info=vage_info,img=img,result=result)
     
 @app.route("/about",methods=["GET","POST"])

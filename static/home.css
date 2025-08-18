@@ -12,6 +12,15 @@
     font-size: 16px;
     z-index: 5;
 }
+.pip button {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  font-size: 0.9rem;
+}
 #img {
   position: relative;
   height: 400px;
@@ -61,7 +70,7 @@ select {
   background-color: white;
 }
 
-button {
+.menu-toggle button {
   background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
   color: white;
   border: none;

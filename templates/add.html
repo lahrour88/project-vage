@@ -9,27 +9,7 @@
   <link rel="stylesheet" href="static/add.css">
 </head>
 <body>
-  <div class="appbar">
-    <div class="appbar-container">
-      <div class="logo">
-        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="شعار محطة غسيل السيارات">
-      </div>
-      
-      <button class="menu-toggle" aria-label="قائمة التنقل">
-        <i class="fas fa-bars"></i>
-      </button>
-      
-      <nav class="appbar-nav">
-        <ul>
-          <li><a href="{{url_for('home')}}"><i class="fas fa-home"></i> الرئيسية</a></li>
-          <li><a href="{{url_for('work')}}"><i class="fas fa-car"></i> خدماتنا</a></li>
-          <li><a href="tel :0616460988"><i class="fas fa-phone"></i> اتصل بنا</a></li>
-          <li><a href="{{url_for('about')}}"><i class="fas fa-info-circle"></i> عنا</a></li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-  
+    {% include 'appbar.html' %}
   <main>
     <div class="introduction">
       <img src="{{img}}">

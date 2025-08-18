@@ -2,9 +2,8 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="descriptions" content="washmobil تطبيق ويب الكتروني لحجز مواعيد غسيل السيارات ">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>محطة لحرور لغسيل السيارات </title>
+  <title>محطة غسيل السيارات - الرئيسية</title>
   <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="static/home.css">
@@ -15,35 +14,10 @@
     .then(() => console.log("Service Worker registered!"));
   }
 </script>
-<meta name="google-site-verification" content="554EqCsfMPNHbULImD4dRUja8BBsVq5SPmeDUiVYtuY" />
+<meta name="google-site-verification" content="Ma5ZjeN-j2NZZq3Ip77aJvNI-0Jsea5lomrt5mHg6Z8" />
 </head>
 <body>
-  <div class="appbar">
-    <div class="appbar-container">
-      <div class="logo">
-        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="شعار محطة غسيل السيارات">
-      </div>
-      
-      <button class="menu-toggle" aria-label="قائمة التنقل">
-        <i class="fas fa-bars"></i>
-      </button>
-      
-      <nav class="appbar-nav">
-        <ul>
-          <li><a href="{{url_for('home')}}"><i class="fas fa-home"></i> الرئيسية</a></li>
-          <li><a href="{{url_for('work')}}"><i class="fas fa-car"></i> خدماتنا</a></li>
-          <li><a href="tel:+212616460988"><i class="fas fa-phone"></i> اتصل بنا</a></li>
-          <li><a href="{{url_for('about')}}"><i class="fas fa-info-circle"></i> عنا</a></li>
-          {% if session.get('logged_in') %}
-          <li><a href="{{url_for('admin_page')}}"><i class="fa-solid fa-user-tie"></i>ادارة الطلباة </a></li>
-          {%endif%}
-<li>
-          <button id="installBtn" style="display:none;"><i class="fa-solid fa-download fa-xl" style="color: #e1dcdc;"></i>تثبيت التطبيق</button>
-</li>
-        </ul>
-      </nav>
-    </div>
-  </div>
+    {% include 'appbar.html' %}
   
   <main>
     <div class="section">
@@ -75,7 +49,7 @@
     </form>
     
     <p>بعد اكمال حجز موعد غسل سيارتك ستجدنا على الخريطة</p>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d767.0164456747696!2d-6.60840334094192!3d34.248967431316466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sfr!2sma!4v1755371364208!5m2!1sfr!2sma" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe src=""></iframe>
   </main>
    {% include 'footer.html' %}
   <script src="static/main.js"></script>

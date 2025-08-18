@@ -29,7 +29,6 @@ def delete_data(user_id):
 def get_data():
     data_in_table_.clear()
     data_analise_.clear()
-
     headers = {
         "apikey": api_key,
         "Authorization": f"Bearer {api_key}",
@@ -38,9 +37,10 @@ def get_data():
     }
     response = requests.get(url, headers=headers)
     data = response.json()
-    data = data[::-1]  # ترتيب عكسي
+    data = data[::-1]  
 
-    ONE_WEEK = 60*60
+
+    ONE_WEEK = 60*60*1.5
     THREE_MONTHS = 90 * 24 * 60 * 60
 
     for user in data:

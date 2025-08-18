@@ -1,0 +1,93 @@
+:root {
+            --primary-color: #3498df;
+            --secondary-color: #2980b9;
+            --accent-color: #f1c40f;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --success-color: #28a745;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', Arial, sans-serif; }
+        body { background-color: #f5f5f5; color: #333; line-height: 1.6; padding: 20px; }
+        
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 30px; 
+        }
+
+        h1 { 
+            color: var(--dark-color); 
+            text-align: center; 
+            margin-bottom: 20px; 
+            padding-bottom: 10px; 
+            border-bottom: 2px solid var(--accent-color); 
+            position: relative; 
+        }
+        h1::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: -2px; 
+            right: 0; 
+            width: 100px; 
+            height: 2px; 
+            background: var(--primary-color); 
+        }
+
+        /* جدول المواعيد */
+        .table-container { 
+            width: 100%; 
+            overflow-x: auto; 
+            background: white; 
+            border-radius: 10px; 
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08); 
+            padding: 20px; 
+            margin-bottom: 30px; 
+        }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            min-width: 800px; 
+        }
+        th, td { 
+            padding: 12px 15px; 
+            text-align: center; 
+            border: 1px solid #e0e0e0; 
+        }
+        th { 
+            background-color: var(--primary-color); 
+            color: white; 
+            font-weight: 600; 
+            position: sticky; 
+            top: 0; 
+        }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        tr:hover { background-color: #f1f1f1; }
+
+        /* الحاويات الخاصة بالمبيانات */
+        .chart-box {
+            width: 100%; 
+            background: white; 
+            border-radius: 10px; 
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08); 
+            padding: 25px; 
+            margin-bottom: 30px; 
+            position: relative;
+        }
+        .chart-box h2 {
+            text-align: center;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        canvas { width: 100% !important; height: 400px !important; }
+
+        /* موبايل */
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            h1 { font-size: 1.4rem; }
+            th, td { padding: 8px 10px; font-size: 0.85rem; }
+            .chart-box { padding: 15px; }
+            canvas { height: 280px !important; }
+        }
