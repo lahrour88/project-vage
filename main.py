@@ -47,7 +47,7 @@ def login():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-        
+        print(username,"and",password)
         # Ù‡Ù†Ø§ ØªØ¶Ø¹ Ù…Ù†Ø·Ù‚ Ø§Ù„ØªØ­Ù‚Ù‚ Ù…Ù† ØµØ­Ø© Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª
         if username == 'admin' and password == 'admin123':  # Ù‡Ø°Ø§ Ù…Ø«Ø§Ù„ ÙÙ‚Ø·ØŒ Ø§Ø³ØªØ®Ø¯Ù… Ù‚Ø§Ø¹Ø¯Ø© Ø¨ÙŠØ§Ù†Ø§Øª ÙÙŠ Ø§Ù„ØªØ·Ø¨ÙŠÙ‚ Ø§Ù„Ø­Ù‚ÙŠÙ‚ÙŠ
             session['logged_in'] = True
@@ -150,4 +150,4 @@ def about():
         send_email(email,body)
     return render_template("about.html")
 if __name__ == "__main__":
-    app.run(port=5000)
+    app.run(port=5000,debug=False)
