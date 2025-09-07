@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>محطة غسيل السيارات - الرئيسية</title>
+  <title>lahrour washing</title>
   <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="static/home.css">
@@ -13,6 +13,15 @@
     navigator.serviceWorker.register("/service-worker.js");
     .then(() => console.log("Service Worker registered!"));
   }
+</script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-39KP9LQJR8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-39KP9LQJR8');
 </script>
 <meta name="google-site-verification" content="Ma5ZjeN-j2NZZq3Ip77aJvNI-0Jsea5lomrt5mHg6Z8" />
 </head>
